@@ -1,2 +1,2 @@
-# Vue_learing
-Vue_learing
+# Vue_learn
+Vue_learn
