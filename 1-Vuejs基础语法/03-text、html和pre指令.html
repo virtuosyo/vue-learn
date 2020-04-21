@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ msg}}
+        <div v-text="msg"></div>
+        <!-- 慎重使用v-html 因为容易引起XSS脚本攻击 网站内部数据可以使用 来自第三方的数据不可以-->
+        <div v-html="msg1"></div>
+        <!-- 显示原始内容 跳过编译过程 -->
+        <div v-pre>{{msg}}</div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello Vue!',
+                msg1: '<h1>Hello!</h1>'
+            },
+        })
+    </script>
+</body>
+
+</html>
