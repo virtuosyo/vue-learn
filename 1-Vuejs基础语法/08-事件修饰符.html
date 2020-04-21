@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{num}}</div>
+        <div v-on:click="handle1">
+            <!-- stop事件修饰符阻止事件冒泡 -->
+            <button v-on:click.stop="handle2">点击加</button>
+        </div>
+        <div>
+            <a href="https://www.baidu.com" v-on:click.prevent="handle3">百度一下</a>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 0
+            },
+            methods: {
+                handle1: function () {
+                    this.num++;
+                },
+                handle2: function (event) {
+                    // 阻止冒泡
+                    // event.stopPropagation();
+
+                },
+                handle3: function (event) {
+                    // 阻止默认行为
+                    // event.preventDefault();
+
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
