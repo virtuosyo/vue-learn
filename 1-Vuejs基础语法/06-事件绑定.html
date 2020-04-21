@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{num}}</div>
+        <div>
+            <button v-on:click="num++">点击加</button>
+            <!-- 简写形式 -->
+            <button @click="num++">点击加</button>
+            <button @click='handle'>点击减</button>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 0
+            },
+            methods: {
+                handle: function () {
+                    // this指代app这个VUE对象
+                    console.log(this);
+                    this.num--;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
