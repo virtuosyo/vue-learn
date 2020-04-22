@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <form id="app">
+            <div>
+                用户名:
+                <input type="text" v-on:keyup.delete="clearContent" v-model="uname">
+            </div>
+            <div>
+                密码:
+                <input type="password" v-on:keyup.enter="handleSubmit" v-model="pwd">
+            </div>
+            <!-- <div> -->
+            <!-- 密码: -->
+            <!-- 利用keycode直接自定义按键 但不直观-->
+            <!-- <input type="password" v-on:keyup.65="handleSubmit" v-model="pwd">
+            </div> -->
+            <div>
+                密码:
+                <!-- 利用keycode直接自定义按键 但不直观 -->
+                <input type="password" v-on:keyup.65="handleSubmit" v-model="pwd">
+            </div>
+            <div>
+                <input type="button" v-on:click="handleSubmit" value="提交"></input>
+            </div>
+        </form>
+    </div>
+    <script>
+        // 事件绑定 自定义按键修饰符
+        // 规则:自定义按键修饰符名字式自定义的 但是对应的值必须式按键对应event.keycode值
+
+        Vue.config.keyCodes.aaa = 65;
+        var app = new Vue({
+            el: '#app',
+            data: {
+                uname: '',
+                pwd: ''
+            },
+            methods: {
+                clearContent: function () {
+                    // delete事件
+                    this.uname = '';
+                },
+                handleSubmit: function () {
+                    console.log(this.uname, this.pwd);
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

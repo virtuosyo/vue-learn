@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="calculator">
+        <h1>简单计算器</h1>
+        <div>
+            <span>X:</span>
+            <span>
+                <input type="text" v-model="x">
+            </span>
+        </div>
+        <div>
+            <span>Y:</span>
+            <span>
+                <input type="text" v-model="y">
+            </span>
+        </div>
+        <div>
+            <button v-on:click="handle">计算</button>
+        </div>
+        <div>
+            <span>结果:</span>
+            <span v-text="result"></span>
+        </div>
+    </div>
+    <script>
+        var calculator = new Vue({
+            el: '#calculator',
+            data: {
+                x: '',
+                y: '',
+                result: ''
+            },
+            methods: {
+                handle: function () {
+                    this.result = parseInt(this.x) + parseInt(this.y);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
