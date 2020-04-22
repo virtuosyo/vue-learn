@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:href="url">百度</a>
+        <!-- 缩写形式 -->
+        <a :href="url">百度2号</a>
+        <button v-on:click="handle"></button>
+    </div>
+    <script>
+        // 属性绑定
+        var app = new Vue({
+            el: '#app',
+            data: {
+                url: 'http://www.baidu.com'
+            },
+            methods: {
+                handle: function () {
+                    // 修改URL地址
+                    this.url = '#'
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

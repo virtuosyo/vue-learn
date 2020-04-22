@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .active {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .error {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:class="{active:isActive,error:isError}">样式绑定</div>
+        <button v-on:click="handle">切换类</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                isError: true
+            },
+            methods: {
+                handle: function () {
+                    // 控制isActive的值
+                    this.isActive = !this.isActive;
+                    this.isError = !this.isError;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
