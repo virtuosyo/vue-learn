@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div v-if="score>=90">
+				优秀
+			</div>
+			<div v-else-if="score<90&&score>=80">
+				良好
+			</div>
+			<div v-else-if="score<80&&score>=60">
+				一般
+			</div>
+			<div v-else>
+				傻逼
+			</div>
+			<div v-show="flag">
+				嘿嘿
+			</div>
+			<button type="button" v-on:click="handle">切换</button>
+		</div>
+		<script type="text/javascript">
+			// v-show原理：控制display的值
+			// v-if 控制元素是否渲染到页面
+			// v-show 控制元素是否显示
+			var app = new Vue({
+				el: '#app',
+				data: {
+					score: 99,
+					flag: false
+				},
+				methods: {
+					handle: function() {
+						this.flag = !this.flag;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

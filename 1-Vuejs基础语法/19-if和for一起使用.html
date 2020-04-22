@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 属性值 属性名 属性索引 -->
+			<div v-if="v==20" v-for="(v,k,i) in obj">
+				{{v+'---'+k+'---'+i}}
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		// 原生JS遍历对象
+		var obj = {
+			uname: 'zy',
+			age: 20,
+			gender: 'male'
+		}
+		for (var x in obj) {
+			console.log(x, obj[x]);
+		}
+
+		// 循环
+		var app = new Vue({
+			el: '#app',
+			data: {
+				obj: {
+					uname: 'zy',
+					age: 20,
+					gender: 'male'
+				}
+			}
+		})
+	</script>
+</html>

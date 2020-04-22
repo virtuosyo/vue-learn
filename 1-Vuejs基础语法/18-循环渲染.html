@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>水果列表</div>
+			<ul>
+				<li v-for="item in fruits">{{item}}</li>
+				<li v-for="(item,index) in fruits">{{item}}+'---'+{{index}}</li>
+				<!-- 加上key帮助Vue区分不同的元素 从而提高性能 -->
+				<li :key="item.id" v-for="item in fruitKing">
+					<span>{{item.name}}</span>
+					<span>{{item.feature}}</span>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					fruits: ['apple', 'pineapple', 'banana'],
+					fruitKing: [{
+						id: 1,
+						name: 'apple',
+						feature: '很牛逼'
+					}, {
+						id: 2,
+						name: 'cherry',
+						feature: '非常牛逼'
+					}, {
+						id: 3,
+						name: 'orange',
+						feature: '真的牛逼'
+					}, ]
+				}
+			})
+		</script>
+	</body>
+</html>
