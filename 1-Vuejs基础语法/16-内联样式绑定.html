@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div v-bind:style="{border:borderStyle,width:widthStyle,height:heightStyle}"></div>
+			<div v-bind:style="objStyles"></div>
+			<div v-bind:style="[objStyles,overrideStyles]"></div>
+			<button v-on:click="handle"></button>
+			<button type="button"></button>
+		</div>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					borderStyle: '1px solid yellow',
+					widthStyle: '100px',
+					heightStyle: '100px',
+					objStyles: {
+						border: '1px solid gray',
+						width: '200px',
+						height: '100px'
+					},
+					// 已有的属性会覆盖
+					overrideStyles: {
+						border: '5px solid orange',
+						backgroundColor: 'pink'
+					}
+				},
+				methods: {
+					handle: function() {
+						this.widthStyle = '50px';
+						this.objStyles.height = '300px'
+					},
+					
+				},
+			})
+		</script>
+	</body>
+
+</html>

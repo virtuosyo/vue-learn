@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .active {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .error {
+            background-color: orange;
+        }
+
+        .test {
+            color: yellow;
+        }
+
+        .base {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:class="[activeClass,errorClass,{test:isTest}]">样式绑定之数组</div>
+        <div v-bind:class="arrClasses">数组方式</div>
+        <div v-bind:class="objClasses">对象方式</div>
+        <div class="base" v-bind:class="objClasses">包含原有的样式</div>
+        <button v-on:click="handle">切换</button>
+    </div>
+    <script>
+        // 样式绑定相关细节
+        // 1.对象绑定和数组绑定可以结合使用
+        // 2.class绑定的值可以简化操作
+        // 3.默认的class如何处理 
+        //   默认的class会保留
+        var app = new Vue({
+            el: '#app',
+            data: {
+                activeClass: 'active',
+                errorClass: 'error',
+                isTest: true,
+                // 内容较多时可以使用数组
+                arrClasses: ['active', 'error'],
+                objClasses: {
+                    active: true,
+                    error: true
+                }
+            },
+            methods: {
+                handle: function () {
+                    // this.activeClass = '';
+                    // this.isTest = !this.isTest;
+                    this.objClasses.error = false;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
