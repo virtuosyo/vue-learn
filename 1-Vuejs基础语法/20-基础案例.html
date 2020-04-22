@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<style type="text/css">
+			.tab ul {
+				overflow: hidden;
+				padding: 0;
+				margin: 0;
+			}
+
+			.tab ul li {
+				box-sizing: border-box;
+				padding: 0;
+				float: left;
+				width: 100px;
+				height: 45px;
+				line-height: 45px;
+				list-style: none;
+				text-align: center;
+				border-top: 1px solid blue;
+				border-right: 1px solid blue;
+				cursor
+			}
+
+			.tab ul li:first-child {
+				border-left: 1px solid blue;
+			}
+
+			.tab ul li.active {
+				background-color: orange;
+			}
+
+			.tab div {
+				width: 500px;
+				height: 300px;
+				display: none;
+				text-align: center;
+				font-size: 30px;
+				line-height: 300px;
+				border: 1px solid blue;
+				border-top: 0px;
+			}
+
+			.tab div.current {
+				display: block;
+			}
+		</style>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="tab">
+				<ul>
+					<!-- 声明式编程 -->
+					<!-- 模板的结构和最终的效果显示基本一致 -->
+					<li :class="currentIndex==index?'active':''" :key='item.id' v-for="(item,index) in fruits" v-on:click="tabOn(index)">{{item.name}}</li>
+				</ul>
+				<div :key='item.id' :class="currentIndex==index?'current':''" v-for="(item,index) in fruits">
+					<img :src="item.url">
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					currentIndex: 0, // 当前选项卡所有
+					fruits: [{
+							id: 0,
+							name: 'apple',
+							url: 'img/apple.png',
+						},
+						{
+							id: 1,
+							name: 'orange',
+							url: 'img/orange.png',
+						},
+						{
+							id: 2,
+							name: 'lemon',
+							url: 'img/lemon.png',
+						},
+					]
+				},
+				methods: {
+					tabOn: function(index) {
+						// 点击选项卡 切换图片
+						this.currentIndex = index;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
