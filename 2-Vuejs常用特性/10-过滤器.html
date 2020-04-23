@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model='msg'>
+			<div>{{msg | upper}}</div>
+			<div>{{msg | upper | lower}}</div>
+			<div :abc='msg | upper'>测试数据</div>
+		</div>
+		<script type="text/javascript">
+			// 过滤器
+			// 1、可以用与插值表达式和属性绑定
+			// 2、支持级联操作 Linux的管道命令
+			// Vue.filter('upper', function(val) {
+			// 	return val.charAt(0).toUpperCase() + val.slice(1);
+			// })
+			Vue.filter('lower', function(val) {
+				return val.charAt(0).toLowerCase() + val.slice(1);
+			})
+			var app = new Vue({
+				el: '#app',
+				data: {
+					msg: 'hello'
+				},
+				filters: {
+					// 局部过滤器
+					upper: function(val) {
+						return val.charAt(0).toUpperCase() + val.slice(1);
+					}
+				},
+			})
+		</script>
+	</body>
+</html>
