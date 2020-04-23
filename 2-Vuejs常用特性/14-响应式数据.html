@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="item in list">{{item}}</li>
+			</ul>
+			<div>
+				<div>{{info.name}}</div>
+				<div>{{info.age}}</div>
+				<div>{{info.gender}}</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					list: ['apple', 'orange', 'banana'],
+					info: {
+						name: 'zy',
+						age: 20,
+						gender: 'male'
+					}
+				},
+			});
+			// 可以处理数组的索引也可以处理对象属性
+			Vue.set(app.list, 2, 'lemon');
+			app.$set(app.list, 1, 'lemon');
+			app.$set(app.info, 'gender', 'female')
+		</script>
+	</body>
+</html>
