@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input v-color="{color:'blue'}" type="text" name="" id="" value="">
+		</div>
+		<script type="text/javascript">
+			Vue.directive('color', {
+				bind: function(el, binding) {
+					// 根据指令的参数设置背景色
+					// console.log(binding);
+					el.style.backgroundColor = binding.value.color;
+				}
+			})
+			var app = new Vue({
+				el: '#app',
+				data: {
+
+				}
+			})
+		</script>
+	</body>
+</html>
