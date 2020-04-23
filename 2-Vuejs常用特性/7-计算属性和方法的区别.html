@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>{{reverseMsg}}</div>
+			<div>{{reverseMsg}}</div>
+			<div>{{reverseMessage()}}</div>
+			<div>{{reverseMessage()}}</div>
+			<div>{{calculateNum}}</div>
+		</div>
+		<script type="text/javascript">
+			// 计算属性具有缓存机制 计算过后会缓存结果 下次会直接获取
+			// 如果计算的数据发生变化 那么会重新计算
+			// 方法不存在缓存
+			var app = new Vue({
+				el: '#app',
+				data: {
+					msg: 'Hello',
+					num: 100
+				},
+				methods: {
+					reverseMessage: function() {
+						console.log('methods');
+						return this.msg.split('').reverse().join('');
+					}
+				},
+				computed: {
+					reverseMsg: function() {
+						console.log('computed');
+						return this.msg.split('').reverse().join('');
+					},
+					calculateNum: function() {
+						var total = 0;
+						for (var i = 0; i <= this.num; i++) {
+							total += i;
+						}
+						console.log('computed');
+						return total;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
