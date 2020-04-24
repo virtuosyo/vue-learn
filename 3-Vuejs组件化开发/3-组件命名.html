@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button-control></button-control>
+        <button-control></button-control>
+        <button-control></button-control>
+        <hello-world></hello-world>
+    </div>
+    <script>
+        // 使用帕斯卡式命名组件 那么在使用组件的时候 只能在字符串模板中使用
+        // 在普通标签模板中 必须使用 -连接 使用组件
+        Vue.component('HelloWorld', {
+            data() {
+                return {
+                    msg:"HelloWorld"
+                }
+            },
+            template:`<div>{{msg}}</div>`
+        })
+        Vue.component('button-control', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: `
+            <div>
+            <button @click="handle">点击了{{count}}次</button>
+            <button>测试</button>
+            <HelloWorld></HelloWorld>
+            </div>
+            `,
+            methods: {
+                handle: function () {
+                    this.count++;
+                },
+            },
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
