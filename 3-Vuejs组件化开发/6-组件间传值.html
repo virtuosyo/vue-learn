@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div>{{pmsg}}</div>
+        <menu-item title="来自父组件的值"></menu-item>
+        <menu-item :title="ptitle" content='hello'></menu-item>
+    </div>
+    <script>
+        Vue.component('menu-item', {
+            // 传递给子组件
+            props: ['title', 'content'],
+            data: function () {
+                return {
+                    msg: '子组件'
+                }
+            },
+            template: '<div>{{msg +"---"+title+content}}</div>'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: '父组件',
+                ptitle: '动态绑定属性'
+            }
+        })
+    </script>
+</body>
+
+</html>

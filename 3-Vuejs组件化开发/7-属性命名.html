@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div>{{pmsg}}</div>
+        <menu-item :menu-title="ptitle" content='hello'></menu-item>
+    </div>
+    <script>
+        Vue.component('menu-item', {
+            // 属性名规则
+            // 在props和template中使用驼峰形式 那么使用时需要使用 -方式
+            // 字符串中无限制 
+            props: ['menuTitle'],
+            template: '<div>{{menuTitle}}<third-com testTitle="hello"></third-com></div>'
+        })
+        Vue.component('third-com', {
+            props: ['testTitle'],
+            template: '<div>{{testTitle}}</div>'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: '父组件',
+                ptitle: '动态绑定属性'
+            }
+        })
+    </script>
+</body>
+
+</html>
