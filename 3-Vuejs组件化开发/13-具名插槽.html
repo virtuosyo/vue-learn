@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <base-layout>
+            <p slot='header'>标题信息</p>
+            <p>主要内容1</p>
+            <p>主要内容2</p>
+            <p slot='footer'>底部信息</p>
+        </base-layout>
+
+        <base-layout>
+            <template slot="header">
+                <!-- 指定多个标签 -->
+                <p>标题内容1</p>
+                <p>标题内容2</p>
+            </template>
+            <p slot='header'>标题信息</p>
+            <p>主要内容1</p>
+            <p>主要内容2</p>
+            <p slot='footer'>底部信息</p>
+        </base-layout>
+    </div>
+    <script>
+        Vue.component('base-layout', {
+            template: `
+              <div>
+                  <header>
+                    <slot name="header"></slot>
+                  </header>
+                  <main>
+                    <slot></slot>
+                  </main>
+                  <footer>
+                    <slot name="footer"></slot>
+                  </footer>
+              </div>
+              `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <alert-box>未知的错误发生了</alert-box>
+        <alert-box></alert-box>
+    </div>
+    <script>
+        Vue.component('alert-box', {
+            // 如果slot中没有传递内容就显示默认内容
+            template: `
+          <div>
+            <strong>ERROR:</strong>
+            <slot>默认内容</slot>
+          </div>
+          `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
