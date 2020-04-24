@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div :style='{fontSize:fontSize+"px"}'>{{pmsg}}</div>
+        <menu-item @enlarge-text="handle($event)"></menu-item>
+    </div>
+    <script type="text/javascript">
+        //   子组件向父组件传值-基本用法
+        //   只允许父组件单向向子组件传递数据
+        //   props传递数据原则：单向数据流
+        Vue.component('menu-item', {
+            template: `
+            <div>
+              <button @click='$emit("enlarge-text",10)'>扩大父组件中的字体大小</button>
+            </div>
+          `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: '父组件中内容',
+                fontSize: 10
+            },
+            methods: {
+                handle: function (val) {
+                    // 扩大字体大小
+                    this.fontSize += val;
+                    console.log(this.parr);
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
