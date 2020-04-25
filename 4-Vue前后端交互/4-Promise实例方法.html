@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function foo() {
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    resolve(123)
+                }, 2000);
+            })
+        }
+        // foo()
+        //     .then(function (res) {
+        //         console.log(res);
+
+        //     })
+        //     .catch(function (res) {
+        //         console.log(res);
+
+        //     })
+        //     .finally(function (res) {
+        //         console.log('finished');
+
+        //     })
+        foo()
+            .then(function (res) {
+                console.log(res);
+
+            }, function (res) {
+                console.log(res);
+
+            })
+            .finally(function (res) {
+                console.log('finished');
+
+            })
+    </script>
+</body>
+
+</html>
