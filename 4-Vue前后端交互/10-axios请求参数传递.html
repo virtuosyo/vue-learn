@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="js/axios.js"></script>
+    <script>
+        // GET 传统传参方式
+        axios.get('http://localhost:3000/axios?id=123')
+            .then(ret => {
+                console.log(ret.data);
+
+            })
+        // GET RESTful 传参方式
+        axios.get('http://localhost:3000/axios/123')
+            .then(ret => {
+                console.log(ret.data);
+
+            })
+        // GET json格式参数传递
+        axios.get('http://localhost:3000/axios', {
+                // axios提供的params参数
+                params: {
+                    id: 789
+                }
+            })
+            .then(ret => {
+                console.log(ret.data);
+            })
+        // DELETE 
+        axios.delete('http://localhost:3000/axios', {
+                params: {
+                    id: 111
+                }
+            })
+            .then(ret => {
+                console.log(ret.data);
+            })
+        // POST  传递JSON数据格式
+        axios.post('http://localhost:3000/axios', {
+                uname: 'zy',
+                pwd: 123
+            })
+            .then(ret => {
+                console.log(ret.data);
+            })
+        // POST 表单参数传递
+        var params = new URLSearchParams();
+        params.append('uname', 'zhangsan')
+        params.append('pwd', '2222')
+        axios.post('http://localhost:3000/axios', params)
+            .then(ret => {
+                console.log(ret.data);
+            })
+            
+        // PUT 传递
+        axios.put('http://localhost:3000/axios/123', {
+                uname: 'meroy',
+                pwd: 123
+            })
+            .then(ret => {
+                console.log(ret.data);
+            })
+    </script>
+</body>
+
+</html>

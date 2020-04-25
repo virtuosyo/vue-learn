@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script src="js/axios.js"></script>
+    <script>
+        // axios 请求拦截器
+        axios.interceptors.request.use(config => {
+            // Do something before request is sent
+            config.headers.mytoken = 'nihao'
+            return config;
+        }, error => {
+            // Do something with request error
+            console.log(error);
+
+        });
+
+        // 响应拦截器 对响应回来的数据进行一定处理
+        axios.interceptors.response.use(response => {
+            var data = response.data;
+            return data;
+        }, error => {
+            // Do something with response error
+            return error;
+        });
+
+        axios.get('http://localhost:3000/adata')
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    </script>
+</body>
+
+</html>
