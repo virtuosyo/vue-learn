@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 传统GET请求传参方式
+        fetch('http://localhost:3000/books?id=123', {
+                // 默认为get请求
+                method: 'get'
+            })
+            .then(function (data) {
+                return data.text()
+            })
+            .then(function (data) {
+                console.log(data);
+
+            })
+        // Restful API
+        fetch('http://localhost:3000/books/123', {
+
+                method: 'get'
+            })
+            .then(function (data) {
+                return data.text()
+            })
+            .then(function (data) {
+                console.log(data);
+
+            })
+
+        // DELETE方法传参
+        fetch('http://localhost:3000/books/456', {
+                method: 'delete'
+            })
+            .then(function (data) {
+                return data.text()
+            })
+            .then(function (data) {
+                console.log(data);
+
+            })
+
+        // POST方法传参
+        fetch('http://localhost:3000/books', {
+                method: 'post',
+                body: 'uname=zy&pwd=123',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(function (data) {
+                return data.text()
+            })
+            .then(function (data) {
+                console.log(data);
+
+            })
+
+        // POST方法json 格式传参
+        fetch('http://localhost:3000/books', {
+                method: 'post',
+                body: JSON.stringify({
+                    uname: 'meroy',
+                    age: 20
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function (data) {
+                return data.text()
+            })
+            .then(function (data) {
+                console.log(data);
+
+            })
+
+        // PUT方法传参
+        // 加上参数表示要修改的ID
+        fetch('http://localhost:3000/books/123', {
+                method: 'put',
+                body: JSON.stringify({
+                    uname: 'slash',
+                    pwd: '789'
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function (data) {
+                return data.text()
+            })
+            .then(function (data) {
+                console.log(data);
+
+            })
+    </script>
+</body>
+
+</html>
