@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/user/1">User1</router-link>
+        <router-link to="/user/2">User2</router-link>
+        <router-link :to="{name:'user',params:{id:3}}">User3</router-link>
+        <router-link to="/register">Register</router-link>
+        <!-- 路由占位符 -->
+        <router-view></router-view>
+    </div>
+
+    <script>
+        var User = {
+            // props接收参数
+            props: ['id', 'uname', 'age'],
+            template: `
+            <div>
+              <h1>User组件 -- 用户id:{{id}} -- 名字:{{uname}} -- 年龄:{{age}}</h1>
+              <button @click="goRegister">跳转到注册页面</button>
+              
+            </div>
+            `,
+            methods: {
+                goRegister() {
+                    // push方法跳转到指定页面 push参数为hash地址
+                    this.$router.push('/register')
+                },
+         
+            },
+        }
+        var Register = {
+            template: `<div>
+              <h1>Register 组件</h1>
+              <button @click="goBack">跳转到注册页面</button>
+            </div>
+            `,
+            methods:{
+                goBack(){
+                    // go方法前进后退
+                    this.$router.go(-1)
+                }
+            }
+        }
+        // 创建路由实例对象
+        const router = new VueRouter({
+            // 所有的路由规则
+            routes: [{
+                path: '/',
+                redirect: '/user'
+            }, {
+                // 命名路由
+                name: 'user',
+                path: '/user/:id',
+                component: User,
+                props: route => ({
+                    uname: 'zy',
+                    age: 20,
+                    id: route.params.id
+                })
+            }, {
+                path: '/register',
+                component: Register
+            }]
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            // 挂载路由实例对象
+            router
+        });
+    </script>
+
+</body>
+
+</html>
