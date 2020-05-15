@@ -31,8 +31,8 @@
                <li :key='item.id' v-for='item in list'>
                   <slot :info='item'>{{item.name}}</slot>
                </li>
-            </div>
-            `
+            </div>                                       
+            `     
         });
         var vm = new Vue({
             el: '#app',
